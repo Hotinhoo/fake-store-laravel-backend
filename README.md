@@ -2,6 +2,8 @@
 
 Este projeto é uma API REST desenvolvida em Laravel para consumir dados da Fake Store API. Ele armazena os produtos localmente, disponibiliza endpoints estruturados com regras de negócio rígidas e conta com uma Interface Visual de Administração para facilitar os testes e validações.
 
+![captura de tela](https://github.com/Hotinhoo/fake-store-laravel-backend/blob/37bb944b2ee330d64884b3a6074435dec68b22a8/screenshot.png)
+
 ## Pré-requisitos
 
 * PHP >= 8.2
