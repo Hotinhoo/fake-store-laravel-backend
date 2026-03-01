@@ -64,19 +64,19 @@ A aplicação agora está rodando em http://127.0.0.1:8000/.
 
 Para provar que a API é robusta e fácil de integrar, o projeto conta com uma página front-end (Single Page Application) integrada diretamente no caminho / da aplicação. Através dessa tela, você pode testar todo o escopo do projeto visualmente:
 
-**Importação Real**: Clique no botão "Import from FakeStore" para engatilhar o endpoint de Upsert.
-**Filtros Combinados**: Use a barra lateral para testar a busca por texto (mín. 3 chars), categorias dinâmicas, intervalo de preços e rating em tempo real.
-**Gestão de Produtos**: Clique em qualquer card de produto para abrir o painel de edição.
-**Edição**: Altere título, preço ou categoria e veja as validações de erro da API.
-**Remoção**: Teste a regra de Soft Delete. O sistema bloqueará a exclusão caso o rating seja superior a 4.5. É obrigatório informar o motivo.
+* **Importação Real**: Clique no botão "Import from FakeStore" para engatilhar o endpoint de Upsert.
+* **Filtros Combinados**: Use a barra lateral para testar a busca por texto (mín. 3 chars), categorias dinâmicas, intervalo de preços e rating em tempo real.
+* **Gestão de Produtos**: Clique em qualquer card de produto para abrir o painel de edição.
+* **Edição**: Altere título, preço ou categoria e veja as validações de erro da API.
+* **Remoção**: Teste a regra de Soft Delete. O sistema bloqueará a exclusão caso o rating seja superior a 4.5. É obrigatório informar o motivo.
 
 ## Sincronização e Logs (Fonte da Verdade)
 
 O sistema foi desenhado para tratar a API externa (FakeStore) como a fonte absoluta da verdade. Isso significa que a rotina de importação garante a integridade dos dados originais:
 
-**Sobrescrita Automática:** Se você alterar o título ou o preço de um produto localmente e depois rodar a importação, o sistema detectará a divergência e restaurará os dados originais da API externa.
-**Restauração de Excluídos:** Se você aplicar um Soft Delete em um produto e ele for enviado novamente pela API externa em uma nova importação, o sistema irá retirá-lo da lixeira automaticamente.
-**Rastreabilidade Total (Logs):** Nenhuma alteração manual ou automática é perdida. Toda vez que a API externa sobrescreve ou restaura um dado, o sistema registra o histórico exato na coluna update_log (JSON) com a tag "action": "api_sync".
+* **Sobrescrita Automática:** Se você alterar o título ou o preço de um produto localmente e depois rodar a importação, o sistema detectará a divergência e restaurará os dados originais da API externa.
+* **Restauração de Excluídos:** Se você aplicar um Soft Delete em um produto e ele for enviado novamente pela API externa em uma nova importação, o sistema irá retirá-lo da lixeira automaticamente.
+* **Rastreabilidade Total (Logs):** Nenhuma alteração manual ou automática é perdida. Toda vez que a API externa sobrescreve ou restaura um dado, o sistema registra o histórico exato na coluna update_log (JSON) com a tag "action": "api_sync".
 
   
 
@@ -84,12 +84,12 @@ O sistema foi desenhado para tratar a API externa (FakeStore) como a fonte absol
 
 Todas as rotas da API possuem o prefixo /api e retornam JSON padronizado.
 
-`POST /api/products/import` - Sincronização, Upsert e Restore automático.
-`GET /api/products/stats` - Estatísticas consolidadas com uso de Cache.
-`GET /api/products` - Listagem com filtros combinados e paginação (Padrão Pipeline).
-`GET /api/products/{id}` - Detalhes com cálculo de taxa (10%) em tempo real.
-`PATCH /api/products/{id}` - Edição parcial com validação via FormRequest.
-`DELETE /api/products/{id}` - Soft Delete com trava de rating e registro de motivo.
+* `POST /api/products/import` - Sincronização, Upsert e Restore automático.
+* `GET /api/products/stats` - Estatísticas consolidadas com uso de Cache.
+* `GET /api/products` - Listagem com filtros combinados e paginação (Padrão Pipeline).
+* `GET /api/products/{id}` - Detalhes com cálculo de taxa (10%) em tempo real.
+* `PATCH /api/products/{id}` - Edição parcial com validação via FormRequest.
+* `DELETE /api/products/{id}` - Soft Delete com trava de rating e registro de motivo.
 
 ## Detalhes Arquiteturais
 
