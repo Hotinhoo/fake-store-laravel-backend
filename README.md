@@ -14,14 +14,18 @@ Siga os passos abaixo para rodar o projeto perfeitamente no seu ambiente local:
 
 * Clone o repositório e instale as dependências do Laravel:
 ```bash
-git clone <url-do-repositorio>
-cd <nome-da-pasta>
+git clone https://github.com/Hotinhoo/fake-store-laravel-backend.git
+cd fake-store-laravel-backend
 composer install
 ```
 
 * Copie o arquivo de exemplo para criar o seu .env:
 ```bash
 cp .env.example .env
+```
+Ou windows:
+```
+copy .env.example .env
 ```
 
 * Gere a chave de segurança da aplicação:
